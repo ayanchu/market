@@ -11,14 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Regist() {
     const {control, handleSubmit, formState: { errors }} = useForm();
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const formData = {
-    //     name: '',
-    //     email: '',
-    //     password: '',
-    // };
+
     const navigate = useNavigate()
 
 

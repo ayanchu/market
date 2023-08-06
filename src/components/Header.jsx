@@ -14,12 +14,14 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../context/CheckAuth';
+import { useSelector } from 'react-redux';
 
 
 
 
 function Header() {
     const {checkAuth, setCheckAuth} = useContext(AuthContext)
+    const {cartTotalQuantity} = useSelector(state => state.cart)
 
     const settings = [
     {
@@ -105,6 +107,7 @@ function Header() {
 
           <Box sx={{ flexGrow: 0, display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
             <ShoppingBasketIcon onClick={naviateToBasket}/>
+            <Typography>{cartTotalQuantity}</Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

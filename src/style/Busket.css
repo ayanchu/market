@@ -1,0 +1,24 @@
+.product{
+    display: flex;
+    justify-content: space-around;
+}
+img{
+    width: 200px;
+}
+.prod-quantity{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.prod-quantity button{
+    padding: 5px;
+}
+.prod-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.order-products span{
+    margin-right: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}

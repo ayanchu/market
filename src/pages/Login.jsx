@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
 
 
 export default function Login() {

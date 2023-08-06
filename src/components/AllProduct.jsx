@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react"
-import Header from "../components/Header"
-import axios from "axios"
-import '../style/ProductList.css'
-import { Link, useNavigate } from "react-router-dom"
-import Search from "../components/Search"
+import { useState, useEffect } from "react";
+import Header from "./Header";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Search from "./Search";
 
 
-
-export default function List() {
-
+export default function AllProduct(){
     const [categories, setCategories] = useState([]);
     const [data, setData] = useState([])
+    const [product, setProduct] = useState([])
     const [search, setSearch] = useState([])
 
 
-    const history = useNavigate();
-
+    const history = useNavigate()
 
 
     useEffect( () => {
@@ -34,13 +32,13 @@ export default function List() {
     },[])
 
 
-    const GoToCategory = async(route) => {
+
+
+    const GoToCategory = (route) => {
         try {
-            await axios.get(`https://dummyjson.com/products/category/${route}`)
+             axios.get(`https://dummyjson.com/products/category/${route}`)
             .then(res => {
                 setData(res.data.products)
-                setSearch(res.data.products)
-
                 history(`/productlist/${route}`);
             })
             .catch(error => {
@@ -53,35 +51,40 @@ export default function List() {
         
     }
 
-
     useEffect(() => {
-        const currentRoute = window.location.pathname.split('/productlist/')[1];
-        if (currentRoute) {
-            GoToCategory(currentRoute);
+        const showAllProduct = async() => {
+            await axios.get(`https://dummyjson.com/products?limit=30`)
+            .then(res => {
+                setProduct(res.data.products)
+                setSearch(res.data.products)
+                return res
+            })
+            .catch(error => {
+                console.log('Error fetching data:', error);
+              });
         }
+        showAllProduct()
     },[])
 
-
+    console.log(search)
 
     return(
         <>
-            <Header/>
-            <section className="list">
-                <nav className="choosePosition">
-                    {categories.map((el) => (
-                            <div key={el}>
-                                <button className="prodCategore" onClick={() => GoToCategory(el)}>
-                                    {el}
-                                </button>
-                            </div>
-                        
-                    ))}
-                </nav>
+        <Header/>
+        
+            <nav className="choosePosition">
+                {categories.map((el) => (
+                    <div key={el}>
+                        <button className="prodCategore" onClick={() => GoToCategory(el)}>
+                            {el}
+                        </button>
+                    </div>
+                ))}
+            </nav>
+            <Search products={product} setSearch={setSearch}/>
 
-                <Search products={data} setSearch={setSearch}/>
-
-                <div className="mainTovar">
-                    {search.map((prod) => ( 
+            <div className="mainTovar">
+                    {search.map((prod) => (
                         <div className="tovar" key={prod.id}>
                             <div className="up">
                                 <img src={prod.thumbnail} alt="" className="thumbnail"/>
@@ -97,8 +100,6 @@ export default function List() {
                         </div>
                     ))}
                 </div>
-                
-            </section>
         </>
     )
 }
