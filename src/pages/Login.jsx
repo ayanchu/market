@@ -36,6 +36,7 @@ export default function Login() {
     const onSubmitLogin = (data) => {
         if(data.email == emailData && data.password == passwordData){
             alert('success')
+            navigate('/')
         }else{
             setEmailOrPasswordError('неверный пароль или e-mail')
         }
@@ -93,7 +94,7 @@ export default function Login() {
                         />
                         {errors.password && <p>{errors.password.message}</p>}
                 </Box>
-                <button type="submit" onClick={changeAuthState}>вход</button>
+                <button type="submit" style={{color: "black"}} onClick={changeAuthState}>вход</button>
             </form>
             <Link
                 href="/regist" 

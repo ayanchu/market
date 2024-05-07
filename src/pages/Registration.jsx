@@ -114,7 +114,7 @@ export default function Regist() {
                     />
                     {errors.password && <p>{errors.password.message}</p>}
                 </Box>
-                <button type="submit">вход</button>
+                <button style={{color: "black"}} type="submit">вход</button>
 
             </form>
 

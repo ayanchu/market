@@ -13,24 +13,18 @@ import AllProduct from "./AllProduct";
 
 export default function MainRoutes() {
     const { checkAuth } = useContext(AuthContext);
-  
+    console.log(checkAuth)
     return (
       <Routes>
-        {checkAuth ? (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/regist" element={<Regist />} />
-          </>
-        ) : (
-          <>
-            <Route path="/busket" element={<Busket />} />
-            <Route path="/productlist" element={<AllProduct />} />
-            <Route path="/productlist/allProduct" element={<AllProduct />} />
-            <Route path="/productlist/:category" element={<List />} />
-            <Route path="/productlist/product/:prodID" element={<ProductDetails />} />
-            <Route path="/profile" element={<Profile />} />
-          </>
-        )}
+
+
+              <Route path="/busket" element={<Busket />} />
+              <Route path="/" element={<AllProduct />} />
+              <Route path="/productlist/allProduct" element={<AllProduct />} />
+              <Route path="/productlist/:category" element={<List />} />
+              <Route path="/productlist/product/:prodID" element={<ProductDetails />} />
+              <Route path="/profile" element={<Profile />} />
+
       </Routes>
     );
   }

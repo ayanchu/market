@@ -65,7 +65,7 @@ function Header() {
             variant="h6"
             noWrap
             component="a"
-            href="/productlist"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -87,7 +87,7 @@ function Header() {
             variant="h5"
             noWrap
             component="a"
-            href="/productlist"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -109,9 +109,9 @@ function Header() {
             <ShoppingBasketIcon onClick={naviateToBasket}/>
             <Typography>{cartTotalQuantity}</Typography>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+              {/*<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>*/}
+              {/*  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />*/}
+              {/*</IconButton>*/}
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
